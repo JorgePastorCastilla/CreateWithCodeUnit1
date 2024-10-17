@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,5 +23,10 @@ public class PlayerController : MonoBehaviour
         //Move vehicle forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
+
+        if (transform.position.y < -50)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
